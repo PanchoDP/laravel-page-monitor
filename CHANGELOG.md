@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.1] - 2026-05-04
+
+### 🐛 Bug Fixes
+
+- Phpstan type error solutions
+
+
 ## [1.1.0] - 2026-05-04
 
 ### 🚀 Features
