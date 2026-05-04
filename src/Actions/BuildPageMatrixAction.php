@@ -9,7 +9,7 @@ use Panchodp\LaravelPageMonitor\Models\PageVisit;
 
 final class BuildPageMatrixAction
 {
-    /** @return LengthAwarePaginator<PageVisit> */
+    /** @return LengthAwarePaginator<int, PageVisit> */
     public function handle(): LengthAwarePaginator
     {
         $query = PageVisit::query()->latest('visited_at');
@@ -19,6 +19,8 @@ final class BuildPageMatrixAction
             $query->with('user');
         }
 
-        return $query->paginate(config('laravel_page_monitor.per_page', 50));
+        $perPage = config('laravel_page_monitor.per_page', 50);
+
+        return $query->paginate(is_int($perPage) ? $perPage : 50);
     }
 }
