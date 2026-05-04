@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Panchodp\LaravelPageMonitor\Actions;
 
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Panchodp\LaravelPageMonitor\Models\PageVisit;
 
 final class BuildPageMatrixAction
 {
-    /** @return Collection<int, PageVisit> */
-    public function handle(): Collection
+    /** @return LengthAwarePaginator<PageVisit> */
+    public function handle(): LengthAwarePaginator
     {
         $query = PageVisit::query()->latest('visited_at');
 
@@ -19,6 +19,6 @@ final class BuildPageMatrixAction
             $query->with('user');
         }
 
-        return $query->get();
+        return $query->paginate(config('laravel_page_monitor.per_page', 50));
     }
 }

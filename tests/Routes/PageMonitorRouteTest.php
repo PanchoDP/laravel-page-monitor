@@ -57,3 +57,13 @@ it('clears all visits and redirects when DELETE is called', function (): void {
 it('displays the clear button', function (): void {
     $this->get('/page-monitor')->assertSee('Clear');
 });
+
+it('paginates visits and shows only the first page', function (): void {
+    foreach (range(1, 55) as $i) {
+        PageVisit::create(['page' => "/page-{$i}", 'visited_at' => now()->subSeconds($i)]);
+    }
+    config(['laravel_page_monitor.per_page' => 50]);
+
+    $this->get('/page-monitor')->assertSee('/page-1');         // más reciente, en página 1
+    $this->get('/page-monitor')->assertDontSee('/page-55');    // más antiguo, en página 2
+});

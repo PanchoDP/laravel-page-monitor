@@ -71,4 +71,15 @@ return [
         'max_records' => env('MONITOR_MAX_RECORDS', 10000),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Pagination
+    |--------------------------------------------------------------------------
+    |
+    | Number of visit records shown per page in the dashboard.
+    |
+    */
+
+    'per_page' => env('MONITOR_PER_PAGE', 50),
+
 ];

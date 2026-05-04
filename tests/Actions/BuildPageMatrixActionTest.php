@@ -15,7 +15,7 @@ it('returns visits ordered by most recent first', function (): void {
 
     $result = (new BuildPageMatrixAction)->handle();
 
-    expect($result->first()->page)->toBe('/new');
+    expect($result->getCollection()->first()->page)->toBe('/new');
 });
 
 it('eager loads user relationship', function (): void {
@@ -23,5 +23,5 @@ it('eager loads user relationship', function (): void {
 
     $result = (new BuildPageMatrixAction)->handle();
 
-    expect($result->first()->relationLoaded('user'))->toBeTrue();
+    expect($result->getCollection()->first()->relationLoaded('user'))->toBeTrue();
 });

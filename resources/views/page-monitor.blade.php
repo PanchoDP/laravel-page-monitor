@@ -43,6 +43,7 @@
                 @endforeach
             </tbody>
         </table>
+        {{ $visits->links('laravel-page-monitor::pagination') }}
     @endif
 </div>
 </body>
