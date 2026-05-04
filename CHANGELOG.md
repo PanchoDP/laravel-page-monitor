@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.0] - 2026-05-04
+
+### 🚀 Features
+
+- Add clear button in page-monitor to delete data
+
+- Pagination in page-monitor
+
+
 ## [1.0.2] - 2026-05-04
 
 ### 🐛 Bug Fixes
