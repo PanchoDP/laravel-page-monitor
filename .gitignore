@@ -1,0 +1,15 @@
+/vendor/
+/.idea/
+/.vscode/
+/.phpunit.cache/
+.phpunit.cache/
+/coverage/
+/.phpunit.result.cache
+/composer.lock
+.phpstan.cache/
+/.php-cs-fixer.cache
+/phpstan.neon
+/.DS_Store
+CLAUDE.md
+*.swp
+*.swo

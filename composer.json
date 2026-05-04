@@ -1,0 +1,70 @@
+{
+    "name": "panchodp/laravel-page-monitor",
+    "description": "Monitor page visits in your Laravel application. Each visit is stored in the database with information about the user (authenticated or guest), device type, IP address, and timestamp.",
+    "keywords": [
+        "php",
+        "laravel",
+        "monitor",
+        "pages",
+        "visits",
+        "analytics",
+        "tracking"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Francisco De Pablo",
+            "email": "fcodepablo@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.4"
+    },
+    "require-dev": {
+        "larastan/larastan": "^3.9.6",
+        "laravel/pint": "^1.29.1",
+        "orchestra/testbench": "^11.1",
+        "pestphp/pest": "^4.7.0",
+        "pestphp/pest-plugin-drift": "^4.1",
+        "rector/rector": "^2.4.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Panchodp\\LaravelPageMonitor\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Panchodp\\LaravelPageMonitor\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "pest",
+        "test:coverage": "pest --coverage",
+        "analyse": "phpstan analyse",
+        "pint": "pint",
+        "refactor": "rector",
+        "dry": ["vendor/bin/rector process --dry-run --ansi"],
+        "test:all": [
+            "@test","@pint","@analyse","@dry"
+        ]
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Panchodp\\LaravelPageMonitor\\LaravelPageMonitorServiceProvider"
+            ],
+            "aliases": {
+                "LaravelPageMonitor": "Panchodp\\LaravelPageMonitor\\Facades\\LaravelPageMonitor"
+            }
+        }
+    }
+}
