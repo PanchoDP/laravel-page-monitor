@@ -123,3 +123,20 @@ tbody td:last-child {
     min-width: 2.5rem;
     text-align: center;
 }
+
+.btn-clear {
+    background: transparent;
+    border: 1px solid #ef4444;
+    color: #ef4444;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.4rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+}
+
+.btn-clear:hover {
+    background: #ef4444;
+    color: #fff;
+}

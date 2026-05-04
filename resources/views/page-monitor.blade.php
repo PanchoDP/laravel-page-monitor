@@ -11,6 +11,11 @@
     <header>
         <span class="dot"></span>
         <h1>Page Monitor</h1>
+        <form method="POST" action="{{ route('page-monitor.clear') }}" style="margin-left: auto;">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn-clear" onclick="return confirm('Clear all page visit records?')">Clear</button>
+        </form>
     </header>
 
     @if($visits->isEmpty())

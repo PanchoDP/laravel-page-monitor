@@ -43,3 +43,17 @@ it('displays Guest when user_id is null', function (): void {
 it('route is named page-monitor', function (): void {
     expect(route('page-monitor'))->toContain('/page-monitor');
 });
+
+it('clears all visits and redirects when DELETE is called', function (): void {
+    PageVisit::create(['page' => '/home', 'visited_at' => now()]);
+    PageVisit::create(['page' => '/about', 'visited_at' => now()]);
+
+    $this->delete('/page-monitor')
+        ->assertRedirect('/page-monitor');
+
+    expect(PageVisit::count())->toBe(0);
+});
+
+it('displays the clear button', function (): void {
+    $this->get('/page-monitor')->assertSee('Clear');
+});
