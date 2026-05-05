@@ -82,4 +82,16 @@ return [
 
     'per_page' => env('MONITOR_PER_PAGE', 50),
 
+    /*
+    |--------------------------------------------------------------------------
+    | Track Guest Visits
+    |--------------------------------------------------------------------------
+    |
+    | When disabled, only visits from authenticated users will be recorded.
+    | Guest (unauthenticated) visits will be silently ignored.
+    |
+    */
+
+    'track_guests' => env('MONITOR_TRACK_GUESTS', true),
+
 ];

@@ -20,7 +20,8 @@ final readonly class VisitsCountMiddleware
     {
         if (config('laravel_page_monitor.enabled', true)
             && $request->route()?->getName() !== 'page-monitor'
-            && ! $request->attributes->get('_page_monitor_tracked')) {
+            && ! $request->attributes->get('_page_monitor_tracked')
+            && (config('laravel_page_monitor.track_guests', true) || auth()->check())) {
             $this->visit_register->handle($request);
             $request->attributes->set('_page_monitor_tracked', true);
         }

@@ -80,10 +80,16 @@ This creates `config/laravel_page_monitor.php`:
 
 ```php
 return [
-    'enabled'    => env('MONITOR_ENABLED', true),
-    'user_model' => env('PAGE_MONITOR_USER_MODEL', 'App\Models\User'),
-    'middleware' => ['web', 'auth'],
-    'track_all'  => env('MONITOR_TRACK_ALL', false),
+    'enabled'      => env('MONITOR_ENABLED', true),
+    'user_model'   => env('PAGE_MONITOR_USER_MODEL', 'App\Models\User'),
+    'middleware'   => ['web', 'auth'],
+    'track_all'    => env('MONITOR_TRACK_ALL', false),
+    'track_guests' => env('MONITOR_TRACK_GUESTS', true),
+    'pruning' => [
+        'retention_days' => env('MONITOR_RETENTION_DAYS', 30),
+        'max_records'    => env('MONITOR_MAX_RECORDS', 10000),
+    ],
+    'per_page' => env('MONITOR_PER_PAGE', 50),
 ];
 ```
 
@@ -91,6 +97,9 @@ return [
 - `user_model`: The Eloquent model used to associate authenticated visits. Change this if your application uses a custom User model.
 - `middleware`: Middleware applied to the `/page-monitor` dashboard route. Defaults to `['web', 'auth']`.
 - `track_all`: When `true`, all routes in the `web` middleware group are tracked automatically — no need to add `visits-count` to each route manually. The `/page-monitor` dashboard is always excluded. Defaults to `false`.
+- `track_guests`: When `false`, only visits from authenticated users are recorded. Guest visits are silently ignored. Defaults to `true`.
+- `pruning`: Controls automatic cleanup of old records (see [Artisan Commands](#artisan-commands)).
+- `per_page`: Number of records shown per page in the dashboard. Defaults to `50`.
 
 ```php
 // Use a custom user model
