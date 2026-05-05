@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.0] - 2026-05-05
+
+### 🚀 Features
+
+- Add guest register option
+
+
 ## [1.1.1] - 2026-05-04
 
 ### 🐛 Bug Fixes
