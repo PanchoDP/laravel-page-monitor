@@ -94,4 +94,19 @@ return [
 
     'track_guests' => env('MONITOR_TRACK_GUESTS', true),
 
+    /*
+    |--------------------------------------------------------------------------
+    | Excluded Routes
+    |--------------------------------------------------------------------------
+    |
+    | Route names listed here will never be tracked. Supports wildcards (*).
+    | Livewire update requests are always excluded automatically via the
+    | X-Livewire header, regardless of this list.
+    |
+    | Example: ['admin.*', 'api.*', 'telescope.*']
+    |
+    */
+
+    'excluded_routes' => [],
+
 ];

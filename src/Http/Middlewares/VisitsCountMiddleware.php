@@ -19,7 +19,8 @@ final readonly class VisitsCountMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if (config('laravel_page_monitor.enabled', true)
-            && $request->route()?->getName() !== 'page-monitor'
+            && ! $request->hasHeader('X-Livewire')
+            && ! $this->isExcludedRoute($request)
             && ! $request->attributes->get('_page_monitor_tracked')
             && (config('laravel_page_monitor.track_guests', true) || auth()->check())) {
             $this->visit_register->handle($request);
@@ -27,5 +28,25 @@ final readonly class VisitsCountMiddleware
         }
 
         return $next($request);
+    }
+
+    private function isExcludedRoute(Request $request): bool
+    {
+        $routeName = $request->route()?->getName();
+
+        if ($routeName === 'page-monitor') {
+            return true;
+        }
+
+        /** @var list<string> $excluded */
+        $excluded = config('laravel_page_monitor.excluded_routes', []);
+
+        foreach ($excluded as $pattern) {
+            if ($routeName !== null && str($routeName)->is($pattern)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
