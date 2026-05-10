@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.0] - 2026-05-10
+
+### 🚀 Features
+
+- Exclude feature
+
+
 ## [1.2.0] - 2026-05-05
 
 ### 🚀 Features
