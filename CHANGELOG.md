@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.1] - 2026-05-13
+
+### 🐛 Bug Fixes
+
+- Composer version 2.9.8
+
+
 ## [1.3.0] - 2026-05-10
 
 ### 🚀 Features
